@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Payroll Management System</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <style>
+    /* Global styles */
+    body {
+      background-color: #fff;
+      color: #7b6e6e;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1, h2 {
+      color: #333;
+      font-family: "Arial Black", sans-serif; /* Updated font style */
+    }
+
+    /* Loading animation */
+    #loader {
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    #loader .loader-circle {
+      width: 50px;
+      height: 50px;
+      border: 5px solid #e2bc14;
+      border-top-color: #1eeb13;
+      border-radius: 50%;
+      animation: loader-rotate 1.5s linear infinite;
+    }
+
+    @keyframes loader-rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Navigation */
+    nav {
+      background-color: #333;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      background-color: #666;
+    }
+
+    /* Main sections */
+    main {
+      padding: 100px;
+    }
+
+    .section-container {
+      display: flex;
+      flex-direction: column; /* Change to vertical direction */
+      gap: 20px;
+    }
+
+    .section {
+      border: 2px solid #000; /* Black border color */
+      border-radius: 10px; /* Updated shape */
+      width: 75%;
+      height: 300px; /* Fixed height for squared shape */
+      transition: box-shadow 0.5s ease;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .section:hover {
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .section-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%; /* Fill the height of the section */
+      text-align: center;
+      z-index: 1;
+      position: relative;
+      color: #fff; /* Changed font color to white */
+      padding: 20px;
+    }
+
+    .section h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .section p {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .section a {
+      color: #d80000; /* Hyperlink color remains unchanged */
+      text-decoration: none;
+      padding: 10px 20px;
+      background-color: #fff; /* Hyperlink background color changed to white */
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .section a:hover {
+      background-color: #b70000;
+    }
+
+    /* Employee Signup Section */
+    #employee-signup {
+      background-color: #6492ec; /* Updated color */
+      border-color: #0c0c0d; /* Updated color */
+    }
+
+    /* Attendance Section */
+    #attendance {
+      background-color: #95ec95; /* Updated color */
+      border-color: #070907; /* Updated color */
+    }
+
+    /* Payroll Release Section */
+    #payroll-release {
+      background-color: #ed70ed; /* Updated color */
+      border-color: #0c0b0b; /* Updated color */
+    }
+
+    /* Show Employees Section */
+    #show-employees {
+      background-color: #dcc440; /* Updated color */
+      border-color: #131210; /* Updated color */
+    }
+
+    /* Salary Details Section */
+    #salary-details {
+      background-color: #54e7aa; /* New color for Salary Details section */
+      border-color: #0d0c0f; /* New color for Salary Details section */
+    }
+
+    /* Slides */
+    .slide {
+      position: absolute;
+      width: 50%;
+      height: 50%;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .slide img {
+      width: 50%;
+      height: 50%;
+      object-fit: cover;
+    }
+
+    /* Additional Styles */
+    .signup-form {
+      max-width: 200px;
+      margin: 0 auto;
+    }
+
+    /* Add your custom styles for a professional look here */
+
+  </style>
+</head>
+<body>
+  <div id="loader">
+    <div class="loader-circle"></div>
+  </div>
+
+  <header>
+    <h1>Welcome to the Payroll Management System</h1>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#employee-signup">Employee Signup</a></li>
+      <li><a href="#attendance">Attendance</a></li>
+      <li><a href="#payroll-release">Payroll Release</a></li>
+      <li><a href="#show-employees">Show Employees</a></li>
+      <li><a href="#salary-details">Salary Details</a></li> <!-- New section link -->
+    </ul>
+  </nav>
+
+  <main>
+    <div class="section-container">
+      <section id="employee-signup" class="section animate_animated animate_fadeIn">
+        <div class="section-content">
+          <h2>Employee Signup</h2>
+          <p>Create a new employment account.</p>
+          <a href="/signup">Go to Signup</a>
+        </div>
+      </section>
+
+      <section id="attendance" class="section animate_animated animate_fadeIn">
+        <div class="section-content">
+          <h2>Attendance</h2>
+          <p>Track employee attendance.</p>
+          <a href="/attendance">Go to Attendance</a>
+        </div>
+      </section>
+
+      <section id="payroll-release" class="section animate_animated animate_fadeIn">
+        <div class="section-content">
+          <h2>Payroll Release System</h2>
+          <p>Release employee payroll.</p>
+          <a href="/payroll">Go to Payroll Release</a>
+        </div>
+      </section>
+
+      <section id="show-employees" class="section animate_animated animate_fadeIn">
+        <div class="section-content">
+          <h2>Show Employees</h2>
+          <p>Display and manage employee information.</p>
+          <a href="/show-employees">Go to Show Employees</a>
+        </div>
+      </section>
+
+      <!-- Salary Details Section -->
+      <section id="salary-details" class="section animate_animated animate_fadeIn">
+        <div class="section-content">
+          <h2>Salary Details</h2>
+          <p>Manage employee salary details.</p>
+          <a href="/salary">Go to Salary Details</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    // Game-based loading effect
+    $(window).on('load', function() {
+      $('#loader').fadeOut('slow');
+    });
+
+    // Smooth scrolling for navigation links
+    $(document).ready(function() {
+      $('nav a').on('click', function(e) {
+        if (this.hash !== '') {
+          e.preventDefault();
+          const hash = this.hash;
+          $('html, body').animate({
+            scrollTop: $(hash).offset().top
+          }, 800);
+        }
+      });
+    });
+
+    // Slides functionality
+    $('.section').each(function() {
+      const slides = $(this).find('.slide');
+      let currentSlide = 0;
+      
+      setInterval(() => {
+        slides.removeClass('active');
+        slides.eq(currentSlide).addClass('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+      }, 3000);
+    });
+  </script>
+</body>
+</html>

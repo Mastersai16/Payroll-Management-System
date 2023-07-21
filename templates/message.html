@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Success Message</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+  <style>
+    body {
+      background-color: #f2f2f2;
+      font-family: "Helvetica Neue", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+
+    .message-box {
+      background-color: #33cc33; /* Green color for success */
+      color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      position: relative;
+    }
+
+    .message-box:before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid #33cc33; /* Green color */
+      transform: translateX(-50%);
+    }
+
+    .message-content {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .message-emoji {
+      font-size: 60px;
+      animation: bounce 2s infinite; /* Apply bounce animation */
+    }
+
+    /* Bounce Animation */
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-20px);
+      }
+      60% {
+        transform: translateY(-10px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="message-box">
+    <div class="message-content">
+      <span class="message-emoji">🎉</span><br>
+      Success!
+    </div>
+    <p>Your request has been processed successfully.</p>
+    <a href="/">Go back to home</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Employee Signup</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+  <style>
+    /* Global styles */
+    body {
+      background-color: #f2f2f2;
+      color: #333;
+      font-family: "Helvetica Neue", sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1, h2 {
+      color: #0088cc;
+      font-family: "Impact", sans-serif;
+    }
+
+    /* Form styles */
+    .signup-form {
+      max-width: 500px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      font-size: 18px;
+      font-weight: bold;
+      color: #880088; /* Creative font color */
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .form-button {
+      background-color: #0088cc;
+      color: #fff;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .form-button:hover {
+      background-color: #006699;
+    }
+
+    /* Add your custom styles for a creative look here */
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1 style="text-align: center;">Employee Signup</h1>
+  </header>
+
+  <div class="signup-form">
+    <form action="/signup" method="post">
+      <div class="form-group">
+        <label class="form-label" for="eid">Employee ID:</label>
+        <input class="form-input" type="text" id="eid" name="eid" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="ename">Employee Name:</label>
+        <input class="form-input" type="text" id="ename" name="ename" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="dptid">Department ID:</label>
+        <input class="form-input" type="text" id="dptid" name="dptid" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="designation">Designation:</label>
+        <input class="form-input" type="text" id="designation" name="designation" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="email">Email:</label>
+        <input class="form-input" type="email" id="email" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="contact">Contact:</label>
+        <input class="form-input" type="tel" id="contact" name="contact" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="address">Address:</label>
+        <textarea class="form-input" id="address" name="address" rows="4" required></textarea>
+      </div>
+
+      <button type="submit" class="form-button">Submit</button>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Payroll Management System - Show Salary</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+  <style>
+    /* Global styles */
+    body {
+      background-color: #f2f2f2;
+      color: #333;
+      font-family: "Helvetica Neue", sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Salary details container */
+    .salary-details {
+      max-width: 600px;
+      margin: 30px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .salary-heading {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #0088cc;
+    }
+
+    .salary-info {
+      margin-bottom: 20px;
+    }
+
+    .salary-label {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .salary-value {
+      font-size: 16px;
+      color: #666;
+    }
+
+    /* Action buttons */
+    .action-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .action-button {
+      background-color: #0088cc;
+      color: #fff;
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .action-button:hover {
+      background-color: #006699;
+    }
+
+    .go-back-button {
+      background-color: #666;
+    }
+
+    /* Success message */
+    .success-message {
+      text-align: center;
+      color: green;
+      font-size: 18px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="salary-details">
+    <h2 class="salary-heading">Salary Details</h2>
+
+    <!-- Use for loop to iterate over the salary details -->
+    {% for key, value in data.items() %}
+      <div class="salary-info">
+        <span class="salary-label">{{ key }}:</span>
+        <span class="salary-value">{{ value }}</span>
+      </div>
+    {% endfor %}
+
+    <!-- Action buttons -->
+    <div class="action-buttons">
+      <a href="/payroll" class="action-button go-back-button">Go Back</a>
+      <!-- Add more action buttons as required -->
+    </div>
+
+    <!-- Display the success message if it exists -->
+    {% if success_message %}
+      <div class="success-message">{{ success_message }}</div>
+    {% endif %}
+  </div>
+</body>
+</html>

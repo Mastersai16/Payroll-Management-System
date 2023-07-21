@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Salary Details Form</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+  <style>
+    /* Global styles */
+    body {
+      background-color: #f2f2f2;
+      color: #333;
+      font-family: "Helvetica Neue", sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Form styles */
+    .salary-form {
+      max-width: 600px;
+      margin: 30px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-heading {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      font-size: 18px;
+      font-weight: bold;
+      color: #0088cc;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .form-submit {
+      background-color: #0088cc;
+      color: #fff;
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .form-submit:hover {
+      background-color: #006699;
+    }
+
+    /* Success message */
+    .success-message {
+      text-align: center;
+      color: green;
+      font-size: 18px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="salary-form">
+    <h2 class="form-heading">Salary Details Form</h2>
+    <form method="post" action="/salary">
+      <div class="form-group">
+        <label class="form-label" for="eid">Employee ID:</label>
+        <input class="form-input" type="text" id="eid" name="eid" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="dptid">Department ID:</label>
+        <input class="form-input" type="text" id="dptid" name="dptid" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="account_number">Account Number:</label>
+        <input class="form-input" type="text" id="account_number" name="account_number" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="pan">PAN:</label>
+        <input class="form-input" type="text" id="pan" name="pan" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="base_salary">Base Salary:</label>
+        <input class="form-input" type="text" id="base_salary" name="base_salary" required>
+      </div>
+
+      <button type="submit" class="form-submit">Submit</button>
+    </form>
+
+    <!-- Display the success message if it exists -->
+    {% if success_message %}
+      <div class="success-message">{{ success_message }}</div>
+    {% endif %}
+  </div>
+</body>
+</html>

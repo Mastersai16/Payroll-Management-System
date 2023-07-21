@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Show Employees</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+  <style>
+    /* Global styles */
+    body {
+      background-color: #f2f2f2;
+      color: #333;
+      font-family: "Helvetica Neue", sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Table styles */
+    .data-table {
+      width: 80%;
+      margin: 30px auto;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .table-heading {
+      background-color: #0088cc;
+      color: #fff;
+      font-size: 24px; /* Increased font size */
+      padding: 20px; /* Increased padding */
+      text-align: center; /* Center the header */
+    }
+
+    .table-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .table-row:last-child {
+      border-bottom: none;
+    }
+
+    .table-cell {
+      flex: 1;
+      text-align: center;
+    }
+
+    /* Add your custom styles for a creative look here */
+
+  </style>
+</head>
+<body>
+  <div class="data-table">
+    <div class="table-heading">
+      Employees Information
+    </div>
+
+    {% for record in data %}
+    <div class="table-row">
+      <div class="table-cell">{{ record.eid }}</div>
+      <div class="table-cell">{{ record.ename }}</div>
+      <div class="table-cell">{{ record.dptid }}</div>
+      <div class="table-cell">{{ record.designation }}</div>
+      <div class="table-cell">{{ record.email }}</div>
+      <div class="table-cell">{{ record.contact }}</div>
+      <div class="table-cell">{{ record.address }}</div>
+    </div>
+    {% endfor %}
+  </div>
+</body>
+</html>
